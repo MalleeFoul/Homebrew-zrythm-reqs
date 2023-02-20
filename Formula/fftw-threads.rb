@@ -32,6 +32,7 @@ fails_with :clang
     
     # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
     system "./configure", "--enable-threads" *std_configure_args, "--disable-silent-rules"
+    system "make"
     system "make", "install"
   end
 
