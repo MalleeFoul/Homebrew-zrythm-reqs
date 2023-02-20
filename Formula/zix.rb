@@ -4,6 +4,7 @@
 class Zix < Formula
   desc "A lightweight C99 portability and data structure library"
   homepage "https://gitlab.com/drobilla/zix"
+  url "https://gitlab.com/drobilla/zix/-/archive/main/zix-main.tar.gz"
   license ""
   head "https://gitlab.com/drobilla/zix.git"
 
@@ -18,6 +19,7 @@ class Zix < Formula
   end
 
   test do
+    system "meson", "test"
     # `test do` will create, run in and delete a temporary directory.
     #
     # This test will fail and we won't accept that! For Homebrew/homebrew-core
