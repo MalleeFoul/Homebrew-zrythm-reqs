@@ -5,6 +5,7 @@ class Zix < Formula
   desc "A lightweight C99 portability and data structure library"
   homepage "https://gitlab.com/drobilla/zix"
   url "https://gitlab.com/drobilla/zix/-/archive/main/zix-main.tar.gz"
+  sha256 "262d4a1522c38be0588746e874159da5c7bb457d"
   license ""
   head "https://gitlab.com/drobilla/zix.git"
 
