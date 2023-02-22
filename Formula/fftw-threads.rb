@@ -2,8 +2,8 @@
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class FftwThreads < Formula
-  desc ""
-  homepage ""
+  desc "C routines to compute the Discrete Fourier Transform - with threads"
+  homepage "http://www.fftw.org/"
   url "http://www.fftw.org/fftw-3.3.10.tar.gz"
   sha256 "56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467"
   license ""
@@ -29,6 +29,41 @@ fails_with :clang
 
 
   def install
+    ENV.runtime_cpu_detection
+
+    args = [
+      "--enable-threads",
+    ]
+
+    # FFTW supports runtime detection of CPU capabilities, so it is safe to
+    # use with --enable-avx and the code will still run on all CPUs
+    simd_args = []
+    simd_args += %w[--enable-sse2 --enable-avx --enable-avx2] if Hardware::CPU.intel?
+
+    # single precision
+    # enable-sse2, enable-avx and enable-avx2 work for both single and double precision
+    system "./configure", "--enable-single", *(args + simd_args)
+    system "make", "install"
+
+
+    # clean up so we can compile the double precision variant
+    system "make", "clean"
+
+    # double precision
+    # enable-sse2, enable-avx and enable-avx2 work for both single and double precision
+    system "./configure", *(args + simd_args)
+    system "make", "install"
+
+    # clean up so we can compile the long-double precision variant
+    system "make", "clean"
+
+    # long-double precision
+    # no SIMD optimization available
+    system "./configure", "--enable-long-double", *args
+    system "make", "install"
+  end
+
+
     
     # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
     system "./configure", "--enable-threads" *std_configure_args, "--disable-silent-rules"
