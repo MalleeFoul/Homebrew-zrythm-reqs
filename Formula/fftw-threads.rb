@@ -1,18 +1,17 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-class FftwThreads < Formula
-  desc "C routines to compute the Discrete Fourier Transform - with threads"
-  homepage "http://www.fftw.org/"
-  url "http://www.fftw.org/fftw-3.3.10.tar.gz"
+class Fftw < Formula
+  desc "C routines to compute the Discrete Fourier Transform"
+  homepage "https://fftw.org"
+  url "https://fftw.org/fftw-3.3.10.tar.gz"
   sha256 "56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467"
   license all_of: ["GPL-2.0-or-later", "BSD-2-Clause"]
-  
+  revision 1
+
   livecheck do
     url :homepage
     regex(%r{latest official release.*? <b>v?(\d+(?:\.\d+)+)</b>}i)
-  
-   bottle do
+  end
+
+  bottle do
     sha256 cellar: :any,                 arm64_ventura:  "f118b9b10a302aaa0a937b9c3004a1610a522f365022ab12e90e7ee929823ff4"
     sha256 cellar: :any,                 arm64_monterey: "ac39928c08c6cec08f61b31c37ea69be21f6020c5c50bbdc66751fc1907ee600"
     sha256 cellar: :any,                 arm64_big_sur:  "de50d4cd3e5de39ccbc168a8eb8555f9e36609198c9e4f91c1d1da122674d066"
@@ -23,7 +22,6 @@ class FftwThreads < Formula
     sha256 cellar: :any_skip_relocation, x86_64_linux:   "c2b552eb0c8d31f577713c2e39ed6a22bd430d30d430d242767f253057839dca"
   end
 
-  
   depends_on "open-mpi"
 
   on_macos do
@@ -40,11 +38,14 @@ class FftwThreads < Formula
       "--disable-debug",
       "--prefix=#{prefix}",
       "--enable-threads",
+      "--disable-dependency-tracking",
+      "--enable-mpi",
+      "--enable-openmp",
     ]
 
     # FFTW supports runtime detection of CPU capabilities, so it is safe to
     # use with --enable-avx and the code will still run on all CPUs
-    simd_args = [--enable-threads]
+    simd_args = []
     simd_args += %w[--enable-sse2 --enable-avx --enable-avx2] if Hardware::CPU.intel?
 
     # single precision
