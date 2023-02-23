@@ -4,3 +4,7 @@ libcyaml
 Libpanel
 
 zix
+
+Libaudec
+
+            Holy shit oh my god I made that myself!!! Me!! a fucking idiot!! It fucking works! Hell yea!
