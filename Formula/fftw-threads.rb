@@ -64,13 +64,6 @@ fails_with :clang
   end
 
 
-    
-    # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
-    system "./configure", "--enable-threads" *std_configure_args, "--disable-silent-rules"
-    system "make"
-    system "make", "install"
-  end
-
   test do
     # `test do` will create, run in and delete a temporary directory.
     #
