@@ -26,7 +26,6 @@ class FftwThreads < Formula
       "--enable-shared",
       "--disable-debug",
       "--prefix=#{prefix}",
-      "--enable-threads",
       "--disable-dependency-tracking",
     ]
 
