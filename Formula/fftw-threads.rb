@@ -27,12 +27,11 @@ class FftwThreads < Formula
       "--disable-debug",
       "--prefix=#{prefix}",
       "--disable-dependency-tracking",
-      "--enable-threads",
     ]
 
     # FFTW supports runtime detection of CPU capabilities, so it is safe to
     # use with --enable-avx and the code will still run on all CPUs
-    simd_args = []
+    simd_args = ["--enable-threads"]
     simd_args += %w[--enable-sse2 --enable-avx --enable-avx2] if Hardware::CPU.intel?
 
     # single precision
