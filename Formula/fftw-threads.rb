@@ -40,7 +40,6 @@ class Fftw < Formula
       "--enable-threads",
       "--disable-dependency-tracking",
       "--enable-mpi",
-      "--enable-openmp",
     ]
 
     # FFTW supports runtime detection of CPU capabilities, so it is safe to
