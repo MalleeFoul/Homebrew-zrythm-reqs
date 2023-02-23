@@ -33,6 +33,9 @@ fails_with :clang
 
     args = [
       "--enable-threads",
+      "--enable-shared",
+      "--disable-debug",
+      "--prefix=#{prefix}",
     ]
 
     # FFTW supports runtime detection of CPU capabilities, so it is safe to
