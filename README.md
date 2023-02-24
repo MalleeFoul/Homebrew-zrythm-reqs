@@ -9,13 +9,13 @@ Ok, so it turns out that FFTW-threads actually does install with the regular hom
 
 What you do have to do when you're doing
 
-        Meson build
+    Meson build
 
 
-    is pass the option
+is pass the option
 
-        ---Dfftw3_threads_separate=false
+    --Dfftw3_threads_separate=false
 
-    Or one of the other ones like that. I'm too tired to look it up right now, so oh well
+Or one of the other ones like that. I'm too tired to look it up right now, so oh well
 
 I am a complete and utter amateur, so yeah
