@@ -16,7 +16,7 @@ class Libcyaml < Formula
     # https://rubydoc.brew.sh/Formula.html#std_configure_args-instance_method
     system "make", "VARIANT=release"
     system "make", "install", "VARIANT=release"
-    
+  end
 
   test do
     # `test do` will create, run in and delete a temporary directory.
