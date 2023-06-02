@@ -2,22 +2,24 @@
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class Libaudec < Formula
-  desc "libaudec (lib audio decoder) is a wrapper library over minimp3, sndfile and libsamplerate for reading and resampling audio files, based on Robin Gareus' audio_decoder code (https://github.com/x42/silan/tree/master/audio_decoder)
-
-  libaudec supports all formats supported by sndfile, in addition to MP3."
-  homepage "https://git.sr.ht/~alextee/libaudec"
-  url "https://git.sr.ht/~alextee/libaudec/archive/e1003934f0bcc14af44366f1951c2a97a72e4835.tar.gz"
-  sha256 "1a4a7ff1d7f30ed1aa8395ad52be8210666b348feecf8eca16e0168bb9c10dc0"
-  license ""
+  desc "library for reading and resampling audio files"
+  homepage "https://git.zrythm.org/zrythm/libaudec"
+  url "https://git.zrythm.org/zrythm/libaudec/archive/v0.3.4.tar.gz"
+  version "0.3.4"
+  sha256 "b1c391eda6431aa6cd57d8b7ab0c70ff3345a7c2a1e11dfe4143195438f509ff"
+  license "AGPLv3+"
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "cmake" => :build
+  depends_on "libsndfile"
+  depends_on "libsamplerate"
+  depends_on "openlibm"
 
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
-    system "meson", "build", *std_meson_args
-    system "meson", "compile", "-C", "build", "--verbose"
+    system "meson", "setup", "build", *std_meson_args
+    system "ninja", "-C", "build", "install"
     system "meson", "install", "-C", "build"
   end
 
