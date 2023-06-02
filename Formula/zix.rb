@@ -5,9 +5,9 @@ class Zix < Formula
   desc "A lightweight C99 portability and data structure library"
   homepage "https://gitlab.com/drobilla/zix"
   url "https://gitlab.com/drobilla/zix/-/archive/main/zix-main.tar.gz"
-  sha256 "262d4a1522c38be0588746e874159da5c7bb457d"
-  license ""
-  head "https://gitlab.com/drobilla/zix.git"
+  version "0.3.3"
+  sha256 "eae6251de50e2519bc7ead3ad4eef466320e25a53034bd30a3f13c764b177c7b"
+  license "ISC"
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
@@ -20,12 +20,11 @@ class Zix < Formula
   end
 
   test do
-    system "meson", "test"
     # `test do` will create, run in and delete a temporary directory.
     #
     # This test will fail and we won't accept that! For Homebrew/homebrew-core
     # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test zix`. Options passed
+    # software. Run the test with `brew test zix-main`. Options passed
     # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
     #
     # The installed folder is not in the path, so use the entire path to any
