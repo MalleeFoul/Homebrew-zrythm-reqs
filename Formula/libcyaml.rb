@@ -13,7 +13,6 @@ class Libcyaml < Formula
 
 
   def install
-    ENV["PREFIX"] = "#{prefix}"
     # ENV.deparallelize  # if your formula fails when building in parallel
     system "make", "VARIANT=release"
     system "make", "install", "PREFIX=#{prefix}"
