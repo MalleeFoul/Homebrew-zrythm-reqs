@@ -6,7 +6,7 @@ class Libcyaml < Formula
   homepage "https://github.com/tlsa/libcyaml/"
   url "https://github.com/tlsa/libcyaml/archive/refs/tags/v1.4.1.tar.gz"
   sha256 "8dbd216e1fce90f9f7cca341e5178710adc76ee360a7793ef867edb28f3e4130"
-  license ""
+  license "ISC"
   version "1.4.1"
 
   depends_on "libyaml" => :build
