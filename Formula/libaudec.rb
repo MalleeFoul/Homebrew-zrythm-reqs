@@ -5,9 +5,9 @@ class Libaudec < Formula
   desc "library for reading and resampling audio files"
   homepage "https://git.zrythm.org/zrythm/libaudec"
   url "https://git.zrythm.org/zrythm/libaudec/archive/v0.3.4.tar.gz"
-  version "0.3.4"
   sha256 "b1c391eda6431aa6cd57d8b7ab0c70ff3345a7c2a1e11dfe4143195438f509ff"
   license "AGPLv3+"
+  version "0.3.4"
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
@@ -20,7 +20,6 @@ class Libaudec < Formula
     # ENV.deparallelize  # if your formula fails when building in parallel
     system "meson", "setup", "build", *std_meson_args
     system "ninja", "-C", "build", "install"
-    system "meson", "install", "-C", "build"
   end
 
   test do
