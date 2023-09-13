@@ -11,11 +11,13 @@ class Appstream < Formula
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
-  depends_on "glib"
-  depends_on "libxml"
+  depends_on "glib" => :build
+  depends_on "libxml2"
   depends_on "libcurl"
   depends_on "libyaml"
-  depends_on "libxml2"
+  depends_on "libxmlb"
+  depends_on "systemd"
+
 
   def install
     # ENV.deparallelize  # if your formula fails when building in parallel
