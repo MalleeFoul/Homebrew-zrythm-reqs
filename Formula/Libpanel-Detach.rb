@@ -6,7 +6,6 @@ class LibpanelDetach < Formula
   url "https://git.sr.ht/~alextee/libpanel-detach/archive/1.1.0-for-zrythm.tar.gz"
   sha256 "c77edbd703be746ef89b0af059d0fec249be7f59bffb3cc6791fa48f895662fd"
   license "LGPL-3.0-or-later"
-  keg_only :versioned_formulae
 
   depends_on "gobject-introspection" => :build
   depends_on "meson" => :build
