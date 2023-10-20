@@ -6,7 +6,7 @@ class Libaudec < Formula
   homepage "https://git.zrythm.org/zrythm/libaudec"
   url "https://git.sr.ht/~alextee/libaudec/archive/v0.3.4.tar.gz"
   mirror "https://github.com/zrythm/libaudec/archive/refs/tags/v0.3.4.tar.gz"
-  sha256 "b1c391eda6431aa6cd57d8b7ab0c70ff3345a7c2a1e11dfe4143195438f509ff"
+  sha256 "edaf7cb187c5e0235e527cde741708e7c8144c9a0c837182dd36d61f5ea26f23"
   license "AGPLv3+"
   version "0.3.4"
 
