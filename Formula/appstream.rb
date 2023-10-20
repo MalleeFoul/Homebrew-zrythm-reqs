@@ -4,24 +4,32 @@
 class Appstream < Formula
   desc ""
   homepage ""
-  url "https://www.freedesktop.org/software/appstream/releases/AppStream-0.16.3.tar.xz"
-  version "0.16.3"
-  sha256 "081c917646e94d7221c9e4aae54dacda95a27c607fa93cd8e6344a2b318b98b1"
+  url "https://www.freedesktop.org/software/appstream/releases/AppStream-0.16.2.tar.xz"
+  version "0.16.2"
+  sha256 "f9cb80bd388fbf06be268afa7f2d65863c85d605ad874b905094f3982d03f232"
   license "LGPL-2.1+"
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
   depends_on "glib" => :build
-  depends_on "libxml2"
-  depends_on "libcurl"
-  depends_on "libyaml"
-  depends_on "libxmlb"
-  depends_on "systemd"
+  depends_on "libxml2" => :build
+  depends_on "gobject-introspection" => :build
+  depends_on "curl" => :build
+  depends_on "snowball" => :build
+  depends_on "libyaml" => :build
+  depends_on "libxmlb" => :build
+  depends_on "cmake" => :build
+  depends_on "pkg-config" => :build
 
 
   def install
+
+
+    inreplace "meson.build",
+      "/usr/include",
+      "/usr/local/include"
     # ENV.deparallelize  # if your formula fails when building in parallel
-    system "meson", "setup", "build", *std_meson_args
+    system "meson", "setup", "build", *std_meson_args, "-Dsystemd=false"
     system "meson", "compile", "-C", "build", "--verbose"
     system "meson", "install", "-C", "build"
   end

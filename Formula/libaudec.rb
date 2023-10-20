@@ -4,7 +4,8 @@
 class Libaudec < Formula
   desc "library for reading and resampling audio files"
   homepage "https://git.zrythm.org/zrythm/libaudec"
-  url "https://git.zrythm.org/zrythm/libaudec/archive/v0.3.4.tar.gz"
+  url "https://git.sr.ht/~alextee/libaudec/archive/v0.3.4.tar.gz"
+  mirror "https://github.com/zrythm/libaudec/archive/refs/tags/v0.3.4.tar.gz"
   sha256 "b1c391eda6431aa6cd57d8b7ab0c70ff3345a7c2a1e11dfe4143195438f509ff"
   license "AGPLv3+"
   version "0.3.4"
