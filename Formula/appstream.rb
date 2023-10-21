@@ -25,11 +25,14 @@ class Appstream < Formula
   depends_on "pcre2" => :build
   depends_on "zstd" => :build
   depends_on "gcc" => :build
-  depends_on "gnu_sed" => :build
+  depends_on "gnu-sed" => :build
+  depends_on "gettext" => :build
+  depends_on "itstool" => :build
 
   fails_with :clang do
     build 600
     cause "I don't like clang I think"
+  end
 
 
   def install
