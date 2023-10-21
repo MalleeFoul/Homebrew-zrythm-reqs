@@ -2,12 +2,14 @@
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class Appstream < Formula
-  desc ""
+  desc "Tools and libraries to work with AppStream metadata"
   homepage ""
-  url "https://www.freedesktop.org/software/appstream/releases/AppStream-0.16.2.tar.xz"
-  version "0.16.2"
-  sha256 "f9cb80bd388fbf06be268afa7f2d65863c85d605ad874b905094f3982d03f232"
+  url "https://www.freedesktop.org/software/appstream/releases/AppStream-0.16.3.tar.xz"
+  mirror "https://github.com/ximion/appstream/archive/refs/tags/v0.16.3.tar.gz"
+  version "0.16.3"
+  sha256 "081c917646e94d7221c9e4aae54dacda95a27c607fa93cd8e6344a2b318b98b1"
   license "LGPL-2.1+"
+  head "https://github.com/ximion/appstream.git"
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
