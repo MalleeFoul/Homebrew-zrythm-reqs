@@ -24,9 +24,6 @@ class Appstream < Formula
   depends_on "pkg-config" => :build
 
 
-  patch do
-    url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream.patch"
-  end
 
   def install
 
