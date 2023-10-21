@@ -24,6 +24,9 @@ class Appstream < Formula
   depends_on "pkg-config" => :build
 
 
+  patch do
+    url
+
   def install
 
 
