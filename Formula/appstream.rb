@@ -22,12 +22,8 @@ class Appstream < Formula
   depends_on "libxmlb" => :build
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
+  depends_on "pcre2" => :build
 
-
-#  patch do
-#   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream.patch"
-#   sha256 "b70b4bb8cb7a695848b3f26fa2f2996c7a202fd93e16f7b2009c8ceaf8c3d30e"
-#  end
 
   def install
 
