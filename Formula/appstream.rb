@@ -33,7 +33,9 @@ class Appstream < Formula
     build 600
     cause "I don't like clang I think"
   end
-
+patch do
+  url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream1.diff" #apparently, on mac sed is weird, so I gotta use gsed.
+end
 
   def install
 
