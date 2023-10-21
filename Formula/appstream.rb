@@ -25,7 +25,8 @@ class Appstream < Formula
 
 
   patch do
-    url
+    url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream.patch"
+  end
 
   def install
 
