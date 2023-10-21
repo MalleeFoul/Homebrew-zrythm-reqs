@@ -9,7 +9,7 @@ class Appstream < Formula
   version "0.16.3"
   sha256 "081c917646e94d7221c9e4aae54dacda95a27c607fa93cd8e6344a2b318b98b1"
   license "LGPL-2.1+"
-  head "https://github.com/ximion/appstream.git"
+ # head "https://github.com/ximion/appstream.git" :head
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
@@ -24,6 +24,10 @@ class Appstream < Formula
   depends_on "pkg-config" => :build
 
 
+#  patch do
+#   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream.patch"
+#   sha256 "b70b4bb8cb7a695848b3f26fa2f2996c7a202fd93e16f7b2009c8ceaf8c3d30e"
+#  end
 
   def install
 
