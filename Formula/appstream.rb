@@ -41,9 +41,11 @@ end
   def install
 
 
-    inreplace "meson.build",
-      "/usr/include",
-      "/usr/local/include"
+    # inreplace "meson.build",
+    #   "/usr/include",
+    #   "/usr/local/include"
+
+
     # ENV.deparallelize  # if your formula fails when building in parallel
     system "meson", "setup", "build", *std_meson_args, "-Dsystemd=false"
     system "meson", "compile", "-C", "build", "--verbose"
