@@ -29,7 +29,7 @@ class Appstream < Formula
   depends_on "gettext" => :build
   depends_on "itstool" => :build
   depends_on "xz" => :build
-  depends_on "ucommon" :build
+  depends_on "ucommon" => :build
 
 # fails_with :clang
 
