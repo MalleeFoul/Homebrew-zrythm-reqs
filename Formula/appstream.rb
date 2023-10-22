@@ -28,15 +28,27 @@ class Appstream < Formula
   depends_on "gnu-sed" => :build
   depends_on "gettext" => :build
   depends_on "itstool" => :build
+  depends_on "docbook" => :build
   depends_on "xz" => :build
   depends_on "ucommon" => :build
   depends_on "gtk-doc" => :build
+  depends_on "tre" => :build
+  depends_on "reproc" => :build
+  depends_on "mpfr" => :build
+  depends_on "libmpc" => :build
+  depends_on "gmp" => :build
+  # depends_on "" => :build
 
-# fails_with :clang
+ fails_with :gcc@13
 
 patch do
   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream1.diff" #apparently, on mac sed is weird, so I gotta use gsed.
   sha256 "2ab5c3be4479697b3b0dbd99ace68491de29b0900fa6dd91a28fa28e68b99e87"
+end
+
+patch do
+  url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream2.diff"
+  sha256 "632a4cde4ad73a9c0c92c1aeca7cb61b7109a76ed81821dcde269012a431a080"
 end
 
   def install
@@ -48,9 +60,13 @@ end
 
 
     # ENV.deparallelize  # if your formula fails when building in parallel
-    system "meson", "setup", "build", *std_meson_args, "-Dsystemd=false"
-    system "meson", "compile", "-C", "build", "--verbose"
-    system "meson", "install", "-C", "build"
+    system "meson", "setup", "build", *std_meson_args, "-Dsystemd=false", "-Dapidocs=false"
+    system "ninja", "-C", "build"
+    system "ninja", "install"
+
+
+    # system "meson", "compile", "-C", "build", "--verbose"
+    # system "meson", "install", "-C", "build"
   end
 
   test do
