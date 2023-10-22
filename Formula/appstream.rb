@@ -24,7 +24,7 @@ class Appstream < Formula
   depends_on "pkg-config" => :build
   depends_on "pcre2" => :build
   depends_on "zstd" => :build
-  depends_on "gcc@13" => :build
+  depends_on "gcc@11" => :build
   depends_on "gnu-sed" => :build
   depends_on "gettext" => :build
   depends_on "itstool" => :build
@@ -37,9 +37,12 @@ class Appstream < Formula
   depends_on "mpfr" => :build
   depends_on "libmpc" => :build
   depends_on "gmp" => :build
+  depends_on "llvm" => :build
+
+
   # depends_on "" => :build
 
- fails_with :gcc@13
+ fails_with :gcc13
 
 patch do
   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream1.diff" #apparently, on mac sed is weird, so I gotta use gsed.
