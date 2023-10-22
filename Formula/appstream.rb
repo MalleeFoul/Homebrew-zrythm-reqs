@@ -30,7 +30,7 @@ class Appstream < Formula
   depends_on "itstool" => :build
   depends_on "xz" => :build
   depends_on "ucommon" => :build
-  depends_on "gtk_doc" => :build
+  depends_on "gtk-doc" => :build
 
 # fails_with :clang
 
