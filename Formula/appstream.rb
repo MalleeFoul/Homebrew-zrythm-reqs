@@ -9,7 +9,7 @@ class Appstream < Formula
   version "0.16.3"
   sha256 "081c917646e94d7221c9e4aae54dacda95a27c607fa93cd8e6344a2b318b98b1"
   license "LGPL-2.1+"
- # head "https://github.com/ximion/appstream.git" :head
+  head "https://github.com/ximion/appstream.git", branch: "main"
 
   depends_on "meson" => :build
   depends_on "ninja" => :build
@@ -24,15 +24,14 @@ class Appstream < Formula
   depends_on "pkg-config" => :build
   depends_on "pcre2" => :build
   depends_on "zstd" => :build
-  depends_on "gcc" => :build
+  depends_on "gcc@11" => :build
   depends_on "gnu-sed" => :build
   depends_on "gettext" => :build
   depends_on "itstool" => :build
+  depends_on "xz" => :build
 
-  fails_with :clang do
-    build 600
-    cause "I don't like clang I think"
-  end
+  fails_with :clang
+
 patch do
   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream1.diff" #apparently, on mac sed is weird, so I gotta use gsed.
   sha256 "2ab5c3be4479697b3b0dbd99ace68491de29b0900fa6dd91a28fa28e68b99e87"
