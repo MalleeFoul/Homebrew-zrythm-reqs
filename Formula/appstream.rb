@@ -24,7 +24,6 @@ class Appstream < Formula
   depends_on "pkg-config" => :build
   depends_on "pcre2" => :build
   depends_on "zstd" => :build
-  depends_on "gcc@11" => :build
   depends_on "gnu-sed" => :build
   depends_on "gettext" => :build
   depends_on "itstool" => :build
