@@ -1,0 +1,16 @@
+diff --git a/src/as-system-info.c b/src/as-system-info.c
+index ec085ee..1107c02 100644
+--- a/src/as-system-info.c
++++ b/src/as-system-info.c
+@@ -47,6 +47,11 @@
+ #include <sys/sysinfo.h>
+ #elif defined(__FreeBSD__) || defined(__APPLE__)
+ #include <sys/types.h>
++#ifdef __APPLE__
++typedef unsigned int u_int;
++typedef unsigned short u_short;
++typedef unsigned char u_char;
++#endif
+ #include <sys/sysctl.h>
+ #endif
+ #ifdef HAVE_SYSTEMD

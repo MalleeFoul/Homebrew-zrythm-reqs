@@ -29,6 +29,7 @@ class Appstream < Formula
   depends_on "gettext" => :build
   depends_on "itstool" => :build
   depends_on "docbook" => :build
+  depends_on "docbook-xsl" => :build
   depends_on "xz" => :build
   depends_on "ucommon" => :build
   depends_on "gtk-doc" => :build
@@ -44,18 +45,25 @@ class Appstream < Formula
 
  fails_with :gcc13
 
-patch do
+patch do #patch 1
   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream1.diff" #apparently, on mac sed is weird, so I gotta use gsed.
   sha256 "2ab5c3be4479697b3b0dbd99ace68491de29b0900fa6dd91a28fa28e68b99e87"
 end
 
-patch do
+patch do #patch 2
   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream2.diff"
   sha256 "632a4cde4ad73a9c0c92c1aeca7cb61b7109a76ed81821dcde269012a431a080"
 end
 
-  def install
+patch do #patch 3
+  url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream3.diff"
+end
 
+
+  def install
+    ENV.append "CFLAGS", "-D_BSD_SOURCE -std=c++11 -stdlib=libc++"
+    ENV["XML_CATALOG_FILES"] = "#{etc}/xml/catalog"
+    ENV.libcxx
 
     # inreplace "meson.build",
     #   "/usr/include",
