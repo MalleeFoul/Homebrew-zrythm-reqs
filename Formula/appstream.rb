@@ -80,7 +80,7 @@ end
     # ENV.deparallelize  # if your formula fails when building in parallel
     system "meson", "setup", "build", *std_meson_args, "-Dsystemd=false", "-Dapidocs=false"
     system "ninja", "-C", "build"
-    system "ninja", "install"
+    system "ninja", "-C", "build", "install"
 
 
     # system "meson", "compile", "-C", "build", "--verbose"
