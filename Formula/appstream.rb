@@ -62,6 +62,10 @@ patch do #patch 3
   sha256 "d88ce08f429b78518410cc005e4aae4c48b07faafef1a99adacb00d3f6148b37"
 end
 
+patch do #patch 4
+  url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream4.diff"
+  sha256 "777176b9cc9629b89a10ea750da7a3f35974fcf0ba0498e35b00e1e3e9d10f83"
+end
 
   def install
     ENV.append "CFLAGS", "-std=c++11 -stdlib=libc++"
