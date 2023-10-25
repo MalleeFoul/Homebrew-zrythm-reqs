@@ -45,6 +45,8 @@ class Appstream < Formula
 
  fails_with :gcc13
 
+ fails_with :clang
+
 patch do #patch 1
   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream1.diff" #apparently, on mac sed is weird, so I gotta use gsed.
   sha256 "2ab5c3be4479697b3b0dbd99ace68491de29b0900fa6dd91a28fa28e68b99e87"
@@ -57,11 +59,12 @@ end
 
 patch do #patch 3
   url "https://github.com/MalleeFoul/Homebrew-zrythm-reqs/raw/main/patch/appstream3.diff"
+  sha256 "d88ce08f429b78518410cc005e4aae4c48b07faafef1a99adacb00d3f6148b37"
 end
 
 
   def install
-    ENV.append "CFLAGS", "-D_BSD_SOURCE -std=c++11 -stdlib=libc++"
+    ENV.append "CFLAGS", "-std=c++11 -stdlib=libc++"
     ENV["XML_CATALOG_FILES"] = "#{etc}/xml/catalog"
     ENV.libcxx
 

@@ -1,0 +1,26 @@
+diff --git a/meson.build b/meson.build
+index 9d65fc6..a661630 100644
+--- a/meson.build
++++ b/meson.build
+@@ -132,8 +132,7 @@ add_project_arguments(
+   language: 'cpp'
+ )
+
+-# Vendor extensions in system headers
+-add_project_arguments('-D_POSIX_C_SOURCE=200809L', language: 'c')
++
+
+ if cc.get_id() == 'clang'
+     # Clang doesn't understand autofree helpers on GMutexLocker and thinks
+diff --git a/src/as-system-info.c b/src/as-system-info.c
+index 1107c02..93ed9e8 100644
+--- a/src/as-system-info.c
++++ b/src/as-system-info.c
+@@ -48,6 +48,7 @@
+ #elif defined(__FreeBSD__) || defined(__APPLE__)
+ #include <sys/types.h>
+ #ifdef __APPLE__
++#define _BSD_SOURCE
+ typedef unsigned int u_int;
+ typedef unsigned short u_short;
+ typedef unsigned char u_char;
