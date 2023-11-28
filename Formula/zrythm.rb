@@ -81,7 +81,7 @@ class Zrythm < Formula
       system "meson", "setup",
         "--prefix=#{prefix}", "--libdir=#{lib}",
         "-Dextra_debug_info=true",
-        "-Doptimization,
+        "-Doptimization",
         "-Dtests=false", "-Dtrial_ver=false",
         "-Dcarla=enabled",
         "-Dx11=disabled",
