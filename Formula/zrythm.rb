@@ -93,7 +93,6 @@ class Zrythm < Formula
         "-Dcheck_updates=true",
         "-Dinstaller_ver=true",
         "-Dvamp_static=true",
-        "-Dcarla_use_cv32_patchbay_variant=true",
         "-Dguile=disabled",
         ".."
 

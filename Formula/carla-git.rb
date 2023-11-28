@@ -19,17 +19,10 @@ class CarlaGit < Formula
   desc "Audio plugin host supporting LADSPA, LV2, VST2/3, SF2 and more"
   homepage "https://kxstudio.linuxaudio.org/Applications:Carla"
   url "https://github.com/falkTX/Carla/archive/1b5f7e9f3509c8af81507470e44fc632591a1cdf.zip"
-  sha256 ""
+  sha256 "39ba0265a99445fe16fefd457d3f5037148e17279ba47090c86e05ac2d131a1b"
   head "https://github.com/falkTX/Carla.git"
   version "0.2.1"
-
-  bottle do
-    # Fix: Calling `sha256 "digest" => :tag` in a bottle block is disabled! Use `brew style --fix` on the formula to update the style or use `sha256 tag: "digest"` instead.
-    #cellar :any
-    sha256 catalina: "0149197353ef0d86c25623d77688a0f3ce045263d76213e7174a3107d10222ea"
-    sha256 mojave: "097ebd9b6fbb10cbcf46cd10b58f8305159ef090d68ae8d89049f0c0b8998d9c"
-    sha256 high_sierra: "51ee66c8406766f33784fe139c292bad745ff43581164168f30f5ffa77171a06"
-  end
+  keg_only "versions formulae"
 
   depends_on "ccache" => :build
   depends_on "pkg-config" => :build
