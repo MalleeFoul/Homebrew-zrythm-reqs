@@ -44,7 +44,7 @@ class Zrythm < Formula
   depends_on "libxslt"
   depends_on "lilv"
   depends_on "librsvg"
-  depends_on "gtksourceview5"
+  depends_on "malleefoul/versions/gtksourceview5@4.13"
   depends_on "graphviz"
   depends_on "rubberband"
   depends_on "sdl2"
@@ -60,7 +60,8 @@ class Zrythm < Formula
   depends_on "json-glib"
   depends_on "malleefoul/zrythm-reqs/libcyaml" => :build
   depends_on "malleefoul/zrythm-reqs/Libpanel-Detach" => :build
-  depends_on "gtk4" => :build
+  depends_on "malleefoul/zrythm-reqs/zplugins"
+  depends_on "malleefoul/versions/gtk4@4.13" => :build
   depends_on "libadwaita" => :build
   depends_on "appstream" => :build
   
@@ -80,7 +81,7 @@ class Zrythm < Formula
       system "meson", "setup",
         "--prefix=#{prefix}", "--libdir=#{lib}",
         "-Dextra_debug_info=true",
-        "-Ddebug=true", "-Doptimization=2",
+        "-Doptimization,
         "-Dtests=false", "-Dtrial_ver=false",
         "-Dcarla=enabled",
         "-Dx11=disabled",
@@ -106,13 +107,15 @@ class Zrythm < Formula
       # install
       system "meson", "install", "--skip-subprojects=reproc,rtaudio,rtmidi"
 
-      system "cp", "-r", "#{Formula["kf5-breeze-icons"].share}/icons/breeze-dark", "#{share}/icons/breeze-dark"
-      system "mkdir", "-p", "#{lib}/zrythm/carla"
-      system "mkdir", "-p", "#{lib}/lv2"
-      system "cp", "-RLv", "#{Formula["zplugins"].lib}/lv2", "#{lib}/"
       system "mkdir", "-p", "#{prefix}/LICENSES"
       system "cp", "-RLv", "../LICENSES", "#{prefix}/"
     end
+  end
+
+  def post_install
+    system "cp", "-r", "#{Formula["kf5-breeze-icons"].share}/icons/breeze-dark", "#{share}/icons/breeze-dark"
+      system "mkdir", "-p", "#{lib}/lv2"
+      system "cp", "-RLv", "#{Formula["zplugins"].lib}/lv2", "#{lib}/"
   end
 
   test do
